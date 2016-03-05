@@ -1,4 +1,4 @@
-package com.udacity.gradle.builditbigger;
+package com.udacity.gradle.imageactivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,22 +7,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.udacity.gradle.imageactivity.ImageActivity;
 
-
-public class MainActivity extends ActionBarActivity {
+public class ImageActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_image);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_image, menu);
         return true;
     }
 
@@ -40,22 +38,9 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-/*
-    public void tellJoke(View view){
 
-        Toast.makeText(this, new Joker().getJoke(), Toast.LENGTH_SHORT).show();
-    }
-
-
-    public void launchLibraryActivity(View view) {
-        Intent myIntent = new Intent(this, ImageActivity.class) ;
+    public void launchLibraryActivity(View view){
+        Intent myIntent = new Intent(this, ImageActivity.class);
         startActivity(myIntent);
     }
-*/
-
-    public void tellJoke(View view){
-        Intent myIntent = new Intent(this, ImageActivity.class) ;
-        startActivity(myIntent);
-    }
-
 }
