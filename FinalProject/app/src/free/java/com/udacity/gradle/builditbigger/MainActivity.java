@@ -7,6 +7,7 @@ import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import com.udacity.gradle.builditbigger.R;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -59,7 +60,7 @@ public class MainActivity extends ActionBarActivity {
     */
 
     public void tellJoke(View view) {
-        new EndpointAsyncTask().execute(new Pair<Context, String>(this, "Manfred"));
+        new com.udacity.gradle.builditbigger.EndpointAsyncTask().execute(new Pair<Context, String>(this, "Manfred"));
     }
 
 }
