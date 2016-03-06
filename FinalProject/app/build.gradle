@@ -14,15 +14,16 @@ android {
 
     productFlavors {
         free {
-            applicationId "com.udacity.gradle.builditbigger.free.free"
+            applicationId "com.udacity.gradle.builditbigger.free"
             dependencies {
                 compile 'com.google.android.gms:play-services:7.5.0'
             }
-            buildConfigField 'boolean', 'PAID_VERSION', 'false'
+            buildConfigField 'boolean', 'PAID_VERSION',"false"
+
         }
         paid {
             applicationId "com.udacity.gradle.builditbigger.paid"
-            buildConfigField 'boolean', 'PAID_VERSION', 'true'
+            buildConfigField 'boolean', 'PAID_VERSION', "true"
         }
     }
 

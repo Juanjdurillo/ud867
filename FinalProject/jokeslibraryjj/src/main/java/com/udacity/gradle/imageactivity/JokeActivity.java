@@ -6,15 +6,30 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 
-public class ImageActivity extends ActionBarActivity {
+public class JokeActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_image);
+        setContentView(R.layout.activity_joke);
+        Intent callingIntent = getIntent();
+        if (callingIntent!=null) {
+            Bundle arguments = callingIntent.getExtras();
+            if (arguments!=null) {
+                String joke = arguments.getString("JOKE");
+                if (joke != null) {
+                    ((TextView) findViewById(R.id.joke_text)).setText(joke);
+                }
+
+            }
+
+        }
+
     }
+
 
 
     @Override
@@ -40,7 +55,7 @@ public class ImageActivity extends ActionBarActivity {
     }
 
     public void launchLibraryActivity(View view){
-        Intent myIntent = new Intent(this, ImageActivity.class);
+        Intent myIntent = new Intent(this, JokeActivity.class);
         startActivity(myIntent);
     }
 }

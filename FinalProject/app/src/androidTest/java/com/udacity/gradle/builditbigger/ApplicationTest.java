@@ -1,6 +1,5 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Context;
 import android.test.AndroidTestCase;
 import android.util.Pair;
 
@@ -26,7 +25,7 @@ public class ApplicationTest extends AndroidTestCase {
                     resultFromTask = result;
                 signal.countDown();
             }
-        }).execute(new Pair<Context, String>(null, "Manfred"));
+        }).execute(new Pair<MainActivity, String>(null, "Manfred"));
         signal.await();
 
 

@@ -1,10 +1,8 @@
 package com.udacity.gradle.builditbigger;
 
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Pair;
-import android.widget.Toast;
 
 import com.example.juan.myapplication.backend.myApi.MyApi;
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -13,13 +11,13 @@ import com.google.api.client.extensions.android.json.AndroidJsonFactory;
 import java.io.IOException;
 
 
-public class EndpointAsyncTask  extends AsyncTask<Pair<Context, String>, Void, String> {
+public class EndpointAsyncTask  extends AsyncTask<Pair<MainActivity, String>, Void, String> {
     private static MyApi myApiService = null;
-    private Context context;
+    private MainActivity activity;
     private EndpointTaskListener myListener;
 
     @Override
-    protected String doInBackground(Pair<Context, String>... params) {
+    protected String doInBackground(Pair<MainActivity, String>... params) {
         if(myApiService == null) {  // Only do this once
             /*MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null)
@@ -42,7 +40,7 @@ public class EndpointAsyncTask  extends AsyncTask<Pair<Context, String>, Void, S
             myApiService = builder.build();
         }
 
-        context = params[0].first;
+        activity = params[0].first;
         String name = params[0].second;
 
         try {
@@ -58,8 +56,9 @@ public class EndpointAsyncTask  extends AsyncTask<Pair<Context, String>, Void, S
         if (this.myListener != null)
             this.myListener.onComplete(result,null);
 
-        if (context!=null)
-            Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+        if (activity!=null)
+            activity.notifyOtherApp(result);
+
 
     }
 

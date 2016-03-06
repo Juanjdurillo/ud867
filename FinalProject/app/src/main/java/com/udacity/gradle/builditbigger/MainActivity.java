@@ -1,12 +1,15 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.udacity.gradle.imageactivity.JokeActivity;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -15,6 +18,9 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
     }
 
 
@@ -47,19 +53,22 @@ public class MainActivity extends ActionBarActivity {
 
 
     public void launchLibraryActivity(View view) {
-        Intent myIntent = new Intent(this, ImageActivity.class) ;
+        Intent myIntent = new Intent(this, JokeActivity.class) ;
         startActivity(myIntent);
     }
 */
 
-   /* public void tellJoke(View view){
-        Intent myIntent = new Intent(this, ImageActivity.class) ;
+    public void notifyOtherApp(String joke) {
+        Intent myIntent = new Intent(this, JokeActivity.class) ;
+        Log.e("joooooooooooooooooooKEKEKEKEKEKKEK", joke);
+        Bundle bundle = new Bundle();
+        bundle.putString("JOKE",joke);
+        myIntent.putExtras(bundle);
         startActivity(myIntent);
     }
-    */
 
     public void tellJoke(View view) {
-        new EndpointAsyncTask().execute(new Pair<Context, String>(this, "Manfred"));
+        new EndpointAsyncTask().execute(new Pair<MainActivity, String>(this, "Manfred"));
     }
 
 }
